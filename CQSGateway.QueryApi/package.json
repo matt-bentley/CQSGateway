@@ -1,0 +1,27 @@
+{
+  "name": "dynamicapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm run lint & nodemon app.js",
+    "lint": "node ./node_modules/eslint/bin/eslint.js **/*.js"
+  },
+  "author": "Matt Bentley",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-bearer-token": "^2.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.5.4",
+    "mongoose-string-query": "^0.2.7",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.11",
+    "odata-resource": "^1.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
+}

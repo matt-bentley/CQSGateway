@@ -1,0 +1,2 @@
+db.createCollection('clients', { collation: { locale: "en", strength: 2, caseFirst: "off", numericOrdering: true } });
+db.createCollection('users', { collation: { locale: "en", strength: 2, caseFirst: "off", numericOrdering: true } });
