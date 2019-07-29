@@ -30,7 +30,6 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include=".dockerignore" />
     <Content Include=".eslintrc.json" />
     <Content Include="api\index.js" />
     <Content Include="api\routes\dynamic.js" />

@@ -1,5 +1,4 @@
 ﻿using CQSGateway.CommandApi.Application.Services.Abstract;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CQSGateway.CommandApi.Controllers
@@ -37,15 +36,16 @@ namespace CQSGateway.CommandApi.Controllers
             return Ok(inserted);
         }
 
-        [HttpPost("{id}/{childType}")]
-        public IActionResult PostChild(string entityType, string id, string childType, [FromBody] object childEntity)
+        [HttpPost("{id}")]
+        public IActionResult PostChild(string entityType, string id, [FromBody] object childEntity)
         {
-            if (string.IsNullOrEmpty(entityType))
-            {
-                return BadRequest();
-            }
-            var inserted = _service.InsertChild(entityType, id, childType, childEntity);
-            return Ok(inserted);
+            return Ok();
+            //if (string.IsNullOrEmpty(entityType))
+            //{
+            //    return BadRequest();
+            //}
+            //var inserted = _service.InsertChild(entityType, id, childType, childEntity);
+            //return Ok(inserted);
         }
 
         [HttpPut("{id}")]
