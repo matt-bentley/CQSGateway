@@ -6,7 +6,7 @@ ENV MONGO_INITDB_ROOT_USERNAME=admin \
     MONGO_INITDB_DATABASE=dev
 
 # add init scripts
-COPY /Scripts/ /docker-entrypoint-initdb.d/
+COPY /CQSGateway.Database/Scripts/ /docker-entrypoint-initdb.d/
 
 EXPOSE 27107
 

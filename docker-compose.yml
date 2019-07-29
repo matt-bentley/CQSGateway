@@ -2,12 +2,49 @@ version: "3"
 
 services:
   database:
-    build: .
+    build:
+      context: .
+      dockerfile: CQSGateway.Database/Dockerfile
     image: cqsg/database
     container_name: cqsg-database
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
       - MONGO_INITDB_DATABASE=dev
+    # ports:
+    #   - "27017:27017"
+  command-api:
+    build:
+      context: .
+      dockerfile: CQSGateway.CommandApi/Dockerfile
+    image: cqsg/command-api
+    container_name: cqsg-command-api
+    environment:
+      - Mongo__Server=database
+    # ports:
+    #   - "5001:80"
+    depends_on:
+      - database
+  query-api:
+    build:
+      context: .
+      dockerfile: CQSGateway.QueryApi/Dockerfile
+    image: cqsg/query-api
+    container_name: cqsg-query-api
+    environment:
+      - MONGO_HOST=database
+    # ports:
+    #   - "5002:5000"
+    restart: always
+    depends_on:
+      - command-api
+  api-gateway:
+    build:
+      context: .
+      dockerfile: CQSGateway.ApiGateway/Dockerfile
+    image: cqsg/api-gateway
+    container_name: cqsg-api-gateway
     ports:
-      - "27017:27017"
+      - "5000:80"
+    depends_on:
+      - command-api

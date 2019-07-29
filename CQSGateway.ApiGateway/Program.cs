@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,9 +21,12 @@ namespace CQSGateway.ApiGateway
 
         private static IConfiguration GetConfiguration()
         {
+            bool runningInContainer = Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER").Equals("true", StringComparison.OrdinalIgnoreCase);
+            string configurationFile = runningInContainer ? "configuration.json" : "configuration.Local.json";
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("configuration.json", optional: false, reloadOnChange: true)
+                .AddJsonFile(configurationFile, optional: false, reloadOnChange: true)
                 .AddEnvironmentVariables();
 
             return builder.Build();

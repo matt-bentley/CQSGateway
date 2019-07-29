@@ -5,8 +5,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "query-api",
-          "Port": 5000
+          "Host": "localhost",
+          "Port": 1337
         }
       ],
       "UpstreamPathTemplate": "/{any}",
@@ -17,8 +17,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "command-api",
-          "Port": 80
+          "Host": "localhost",
+          "Port": 64177
         }
       ],
       "UpstreamPathTemplate": "/{any}",

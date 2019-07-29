@@ -31,14 +31,6 @@ app.use(function(req,res){
 //  MongoDB connection 
 const mongoose = require('mongoose');
 const mongoHost = process.env.MONGO_HOST || '192.168.99.100';
-//mongoose.connect(`mongodb://${mongoHost}:27017/dev`, { useNewUrlParser: true });
-
-mongoose.connect(`mongodb://${mongoHost}:27017/dev`, {
-    'auth': { 'authSource': 'admin' },
-    'user': 'admin',
-    'pass': 'password',
-    useNewUrlParser: true
- });
 
 // Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
 // by default, you need to set it to false.
@@ -52,4 +44,14 @@ db.once('open', function () {
 	app.listen(app.get('port'), function () {
 		console.log('API Server Listening on port ' + app.get('port'));
 	});
+});
+
+mongoose.connect(`mongodb://${mongoHost}:27017/dev`, {
+    'auth': { 'authSource': 'admin' },
+    'user': 'admin',
+    'pass': 'password',
+    useNewUrlParser: true,
+    autoReconnect: true,
+    reconnectTries: Number.MAX_VALUE,
+    reconnectInterval: 500
 });
