@@ -30,7 +30,7 @@ app.use(function(req,res){
 
 //  MongoDB connection 
 const mongoose = require('mongoose');
-const mongoHost = process.env.MONGO_HOST || '192.168.99.100';
+const mongoHost = process.env.MONGO_HOST || 'localhost';
 
 // Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
 // by default, you need to set it to false.
@@ -47,11 +47,11 @@ db.once('open', function () {
 });
 
 mongoose.connect(`mongodb://${mongoHost}:27017/dev`, {
-    'auth': { 'authSource': 'admin' },
-    'user': 'admin',
-    'pass': 'password',
-    useNewUrlParser: true,
-    autoReconnect: true,
-    reconnectTries: Number.MAX_VALUE,
-    reconnectInterval: 500
+	'auth': { 'authSource': 'admin' },
+	'user': 'admin',
+	'pass': 'password',
+	useNewUrlParser: true,
+	autoReconnect: true,
+	reconnectTries: Number.MAX_VALUE,
+	reconnectInterval: 500
 });

@@ -70,6 +70,7 @@ namespace CQSGateway.CommandApi.Middleware
             }
             else
             {
+                // this is a root entity
                 return uri;
             }
         }
@@ -82,6 +83,7 @@ namespace CQSGateway.CommandApi.Middleware
             }
             if (partCount == 2)
             {
+                // this is a root entity
                 return uri;
             }
             else

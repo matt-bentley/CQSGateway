@@ -42,6 +42,7 @@
     <Content Include="models\dynamic_item.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="yarn.lock" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="api\" />

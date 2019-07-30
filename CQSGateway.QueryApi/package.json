@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "npm run lint & nodemon app.js",
-    "lint": "node ./node_modules/eslint/bin/eslint.js **/*.js"
+    "lint": "node ./node_modules/eslint/bin/eslint.js **/*.js",
+    "lint-fix": "node ./node_modules/eslint/bin/eslint.js **/*.js --fix"
   },
   "author": "Matt Bentley",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "express": "^4.16.4",
     "express-bearer-token": "^2.4.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.13",
     "mongoose": "^5.5.4",
     "mongoose-string-query": "^0.2.7",
     "morgan": "^1.9.1",
